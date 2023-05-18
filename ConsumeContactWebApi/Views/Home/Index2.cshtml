@@ -1,5 +1,4 @@
-﻿@using System.Data
-@model DataTable
+﻿@model IEnumerable<UserEntity>
 @{
     ViewData["Title"] = "Fetching Data from Contacts API";
 }
@@ -15,21 +14,25 @@
             <th>@Html.DisplayName("Email")</th>
             <th>@Html.DisplayName("Phone")</th>
             <th>@Html.DisplayName("Address")</th>
-            <th>Action</th>
         </tr>
-        
+
     </thead>
     <tbody>
-        @foreach(DataRow row in Model.Rows)
+        @foreach (var row in Model)
         {
             <tr>
+                <td>@row.FullName</td>
+                <td>@row.Email</td>
+                <td>@row.Phone</td>
+                <td>@row.Address</td>
+            </tr>
+
+           @* <tr>
                 <td>@row["fullname"]</td>
                 <td>@row["email"]</td>
                 <td>@row["phone"]</td>
                 <td>@row["address"]</td>
-                <td><button class="btn btn-success">Edit</button> <button class="btn btn-danger">Delete</button></td>
-                
-            </tr>
+            </tr>*@
         }
     </tbody>
 </table>
