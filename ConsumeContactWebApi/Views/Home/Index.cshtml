@@ -1,0 +1,37 @@
+﻿@using System.Data
+@model DataTable
+@{
+    ViewData["Title"] = "Fetching Data from Contacts API";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Name")</th>
+            <th>@Html.DisplayName("Email")</th>
+            <th>@Html.DisplayName("Phone")</th>
+            <th>@Html.DisplayName("Address")</th>
+            <th>Action</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach(DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>@row["fullname"]</td>
+                <td>@row["email"]</td>
+                <td>@row["phone"]</td>
+                <td>@row["address"]</td>
+                <td><a type ="button" asp-controller="Home" asp-action="Edit" asp-route-id="@row["id"]" class="btn btn-success">Edit</a>
+                    <a type ="button" asp-controller="Home" asp-action="Delete" asp-route-id="@row["id"]" class="btn btn-danger">Delete</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
